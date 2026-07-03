@@ -91,7 +91,7 @@ pub use identities::{
     OwnUserIdentityData, UserDevices, UserIdentity, UserIdentityData,
 };
 pub use machine::{
-    CrossSigningBootstrapError, CrossSigningBootstrapRequests, EncryptionSyncChanges, OlmMachine,
+    BootstrapCrossSigningError, CrossSigningBootstrapRequests, EncryptionSyncChanges, OlmMachine,
     OlmMachineBuilder,
 };
 use matrix_sdk_common::deserialized_responses::{DecryptedRoomEvent, UnableToDecryptInfo};

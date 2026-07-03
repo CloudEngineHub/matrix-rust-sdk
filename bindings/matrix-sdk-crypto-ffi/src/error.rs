@@ -157,9 +157,9 @@ impl From<InnerStoreError> for DecryptionError {
     }
 }
 
-impl From<matrix_sdk_crypto::CrossSigningBootstrapError> for BootstrapCrossSigningError {
-    fn from(err: matrix_sdk_crypto::CrossSigningBootstrapError) -> Self {
-        use matrix_sdk_crypto::CrossSigningBootstrapError as Error;
+impl From<matrix_sdk_crypto::BootstrapCrossSigningError> for BootstrapCrossSigningError {
+    fn from(err: matrix_sdk_crypto::BootstrapCrossSigningError) -> Self {
+        use matrix_sdk_crypto::BootstrapCrossSigningError as Error;
         match err {
             Error::CryptoStore(e) => Self::CryptoStore(e.into()),
             Error::Signature(e) => Self::Signature(e.into()),

@@ -2,7 +2,7 @@ Accept `impl Into<Signature>` in `Signatures::add_signature`.
 
 [**breaking**] Make `OlmMachine::bootstrap_cross_signing` falliable to
 allow future signing implementations to produce errors. Further
-introduces `CrossSigningBootstrapError` to enumerate possible failure
+introduces `BootstrapCrossSigningError` to enumerate possible failure
 cases.
 
 [**breaking**] Inline `Account::sign_master_key` in advance of X.509 changes

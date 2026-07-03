@@ -717,7 +717,7 @@ impl OlmMachine {
     pub async fn bootstrap_cross_signing(
         &self,
         reset: bool,
-    ) -> Result<CrossSigningBootstrapRequests, CrossSigningBootstrapError> {
+    ) -> Result<CrossSigningBootstrapRequests, BootstrapCrossSigningError> {
         // Don't hold the lock, otherwise we might deadlock in
         // `bootstrap_cross_signing()` on `account` if a sync task is already
         // running (which locks `account`), or we will deadlock
@@ -3199,7 +3199,7 @@ pub struct CrossSigningBootstrapRequests {
 ///
 /// * because the new cross-signing identity could not be signed.
 #[derive(Debug, thiserror::Error)]
-pub enum CrossSigningBootstrapError {
+pub enum BootstrapCrossSigningError {
     /// A failure with the store occurred.
     #[error(transparent)]
     CryptoStore(#[from] CryptoStoreError),

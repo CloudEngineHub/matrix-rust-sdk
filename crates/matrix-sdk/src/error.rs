@@ -22,7 +22,7 @@ use http::StatusCode;
 use matrix_sdk_base::crypto::ScanError;
 #[cfg(feature = "e2e-encryption")]
 use matrix_sdk_base::crypto::{
-    CrossSigningBootstrapError, CryptoStoreError, DecryptorError, KeyExportError, MegolmError,
+    BootstrapCrossSigningError, CryptoStoreError, DecryptorError, KeyExportError, MegolmError,
     OlmError, SignatureError,
 };
 use matrix_sdk_base::{
@@ -533,11 +533,11 @@ impl From<QueueWedgeError> for Error {
 }
 
 #[cfg(feature = "e2e-encryption")]
-impl From<CrossSigningBootstrapError> for Error {
-    fn from(error: CrossSigningBootstrapError) -> Self {
+impl From<BootstrapCrossSigningError> for Error {
+    fn from(error: BootstrapCrossSigningError) -> Self {
         match error {
-            CrossSigningBootstrapError::CryptoStore(e) => e.into(),
-            CrossSigningBootstrapError::Signature(e) => e.into(),
+            BootstrapCrossSigningError::CryptoStore(e) => e.into(),
+            BootstrapCrossSigningError::Signature(e) => e.into(),
         }
     }
 }
