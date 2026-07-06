@@ -922,10 +922,19 @@ version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7b77c319abfd5219629c45c34c89ba945ed3c5e49fcde9d16b6c3885f118a730"
 dependencies = [
+ "aes",
+ "cbc",
+ "cipher",
  "const-oid",
  "der",
+ "rsa",
+ "sha1",
+ "sha2",
+ "sha3",
+ "signature",
  "spki",
  "x509-cert",
+ "zeroize",
 ]
 
 [[package]]
@@ -3156,6 +3165,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "keccak"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cb26cec98cce3a3d96cbb7bced3c4b16e3d13f27ec56dbd62cbc8f39cfb9d653"
+dependencies = [
+ "cpufeatures 0.2.12",
+]
+
+[[package]]
 name = "konst"
 version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3804,12 +3822,16 @@ dependencies = [
  "matrix-sdk",
  "matrix-sdk-base",
  "matrix-sdk-common",
+ "matrix-sdk-crypto",
  "matrix-sdk-test",
  "matrix-sdk-test-utils",
  "matrix-sdk-ui",
+ "oid-registry",
  "rand 0.10.1",
+ "rcgen",
  "reqwest",
  "serde_json",
+ "sha2",
  "similar-asserts",
  "stream_assert",
  "tempfile",
@@ -6028,6 +6050,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "sha3"
+version = "0.10.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77fd7028345d415a4034cf8777cd4f8ab1851274233b45f84e3d955502d93874"
+dependencies = [
+ "digest",
+ "keccak",
+]
+
+[[package]]
 name = "sharded-slab"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6681,6 +6713,27 @@ name = "tinyvec_macros"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
+
+[[package]]
+name = "tls_codec"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0de2e01245e2bb89d6f05801c564fa27624dbd7b1846859876c7dad82e90bf6b"
+dependencies = [
+ "tls_codec_derive",
+ "zeroize",
+]
+
+[[package]]
+name = "tls_codec_derive"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2d2e76690929402faae40aebdda620a2c0e25dd6d3b9afe48867dfd95991f4bd"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.101",
+]
 
 [[package]]
 name = "tokio"
@@ -8377,7 +8430,10 @@ checksum = "1301e935010a701ae5f8655edc0ad17c44bad3ac5ce8c39185f75453b720ae94"
 dependencies = [
  "const-oid",
  "der",
+ "sha1",
+ "signature",
  "spki",
+ "tls_codec",
 ]
 
 [[package]]
@@ -8397,6 +8453,24 @@ dependencies = [
  "rusticata-macros",
  "thiserror 2.0.18",
  "time",
+]
+
+[[package]]
+name = "x509test"
+version = "0.1.0"
+dependencies = [
+ "cms",
+ "const-oid",
+ "pkcs1",
+ "rsa",
+ "rustls",
+ "rustls-webpki",
+ "serde",
+ "serde_json",
+ "sha2",
+ "vodozemac",
+ "x509-cert",
+ "x509-parser",
 ]
 
 [[package]]
